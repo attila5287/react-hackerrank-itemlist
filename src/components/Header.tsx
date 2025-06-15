@@ -2,9 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   return (
-    <div className="container mb-2">
-      <div className="row">
-        <div className="col-sm-6">
+    <div className="mb-2">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -18,7 +16,5 @@ export default function Header() {
             </h1>
           </motion.div>
         </div>
-      </div>
-    </div>
   );
 }

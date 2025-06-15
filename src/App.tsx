@@ -60,10 +60,10 @@ function App() {
 
   return (
     <>
-      <Header />
       <div className="container">
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-sm-10 col-md-8 col-lg-6">
+            <Header />
             <ItemInput
               input={input}
               onInputChange={setInput}
@@ -79,10 +79,10 @@ function App() {
               ))}
             </ul>
             <hr />
+            <InfoDev />
           </div>
         </div>
       </div>
-      <InfoDev />
       <DetailedRequirements />
     </>
   );
