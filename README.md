@@ -1,21 +1,77 @@
-# React + TypeScript + Vite
+# Item List Manager - HackerRank REACT Interview Question
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ \n deployed vercel app: <https://react-hackerrank-itemlist.vercel.app/>
 
-While this project uses React, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+# **Detailed Requirements**
 
-## Deploy Your Own
 
-Deploy your own Vite project with Vercel.
+1. When the application loads, it should display an empty list.
+2. The input field should accept user text input.
+3. When the button is clicked:
+4. The text from the input field should be added to the list.
+5. The input field should be cleared.
+6. If the input field is empty and the button is clicked, nothing should be added to the list.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/vite-react&template=vite-react)
+# **Sample Interaction**
 
-_Live Example: https://vite-react-example.vercel.app_
+## **Initial State**
 
-### Deploying From Your Terminal
+* The list is empty.
+* The input field is empty.
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+## **User Action 1**
 
-```shell
-$ vercel
+* User types "First Item" in the input field.
+* User clicks "Add Item" button.
+* The list displays "First Item".
+
+## **User Action 2**
+
+* User types "Second Item" in the input field.
+* User clicks "Add Item" button.
+* The list displays:
+  * "First Item"
+  * "Second Item"
+
+## Simplest Solution
+
+```javascript
+import { useState } from 'react'
+
+function App() {
+  // Initial state: empty list and empty input field
+  const [list, setList] = useState<string[]>([])
+  const [input, setInput] = useState('')
+
+  return (
+    <div>
+      {/* Input field for user text */}
+      <input 
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        placeholder="Enter item"
+      />
+      <button onClick={() => {
+        // Only add if input is not empty
+        if (input) {
+          // Add text to list
+          setList([...list, input])
+          // Clear input field
+          setInput('')
+        }
+      }}>Add Item</button>
+
+      {/* Display the list */}
+      <ul>
+        {list.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default App
 ```
+
+ \n 
