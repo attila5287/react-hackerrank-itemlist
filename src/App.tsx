@@ -53,7 +53,8 @@ function App() {
   const [input, setInput] = useState("");
 
   const handleAddItem = () => {
-    setList([...list, input]);
+    const trimmedInput = input.trim();
+    setList([...list, trimmedInput]);
     setInput("");
   };
 
